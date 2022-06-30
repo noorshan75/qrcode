@@ -3,7 +3,7 @@
     let head = document.getElementsByTagName("head")[0];
     head.insertBefore(b, head.children[1]);
 
-    fetch("http://localhost:8080/qrcode/getqrcode")
+    fetch("https://demo25app.birdeye.com/qrcode/getqrcode")
         .then(response => response.json())
         .then(json => {
             const data = json[0];
