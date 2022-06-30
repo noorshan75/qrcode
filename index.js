@@ -3,35 +3,32 @@
     let head = document.getElementsByTagName("head")[0];
     head.insertBefore(b, head.children[1]);
 
-    const image = "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg";
-
-    fetch("https://jsonplaceholder.typicode.com/todos/1")
+    fetch("https://demo25app.birdeye.com/qrcode/getqrcode")
         .then(response => response.json())
-        .then(json => console.log(json));
-
-    setTimeout(() => {
-        let a = document.createElement("script"); a.type = "text/javascript";
-        const s = document.createTextNode(`const qrCode = new QRCodeStyling({
-            width: 300,
-            height: 300,
-            type: "svg",
-            data: "https://www.facebook.com/",
-            image: "${image}",
-            dotsOptions: {
-                color: "#4267b2",
-                type: "rounded"
-            },
-            backgroundOptions: {
-                color: "#e9ebee",
-            },
-            imageOptions: {
-                crossOrigin: "anonymous",
-                margin: 20
-            }
+        .then(json => {
+            const data = json[0];
+            let a = document.createElement("script"); a.type = "text/javascript";
+            const s = document.createTextNode(`const qrCode = new QRCodeStyling({
+                    width: 300,
+                    height: 300,
+                    type: "svg",
+                    data: "${data.redirectURL}",
+                    image: "${data.image}",
+                    dotsOptions: {
+                        color: "#4267b2",
+                        type: "rounded"
+                    },
+                    backgroundOptions: {
+                        color: "#e9ebee",
+                    },
+                    imageOptions: {
+                        crossOrigin: "anonymous",
+                        margin: 20
+                    }
+                });
+                qrCode.append(document.getElementById("canvas"));`);
+            a.appendChild(s);
+            let c = document.getElementsByTagName("body")[0];
+            c.appendChild(a);
         });
-        qrCode.append(document.getElementById("canvas"));`);
-        a.appendChild(s);
-        let c = document.getElementsByTagName("body")[0];
-        c.appendChild(a);
-    }, 500); 
 })();
