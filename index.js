@@ -8,7 +8,7 @@
         .then(json => {
             const data = json[0];
             let a = document.createElement("script"); a.type = "text/javascript";
-            cconst div = document.createElement("div"); div.id = "canvas";
+            let div = document.createElement("div"); div.id = "canvas";
             const s = document.createTextNode(`const qrCode = new QRCodeStyling({
                     width: 300,
                     height: 300,
