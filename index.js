@@ -30,6 +30,7 @@
                 qrCode.append(document.getElementById("canvas"));`);
             a.appendChild(s);
             let c = document.getElementsByTagName("body")[0];
+            c.appendChild(div);
             c.appendChild(a);
         });
 })();
